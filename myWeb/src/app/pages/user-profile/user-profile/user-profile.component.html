@@ -1,0 +1,10 @@
+<div class="user-profile">
+    <h1>User Profile</h1>
+    <div *ngIf="isLoggedIn; else notLoggedIn">
+      <p>Welcome, user!</p>
+      <!-- Add more user profile details here -->
+    </div>
+    <ng-template #notLoggedIn>
+      <p>Please log in to view your profile.</p>
+    </ng-template>
+  </div>

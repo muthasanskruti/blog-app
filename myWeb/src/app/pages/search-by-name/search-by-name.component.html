@@ -1,0 +1,42 @@
+<div class="div">
+    <div class="search-form">
+        <mat-form-field appearance="outline" class="search-input">
+            <mat-label>Enter keyword to search</mat-label>
+            <input matInput [(ngModel)]="keyword">
+            <button mat-button matSuffix color="primary" (click)="searchByKeyword(keyword)">
+                <i class="fas fa-search"></i> Search
+            </button>
+        </mat-form-field>
+    </div>
+
+    <div class="empty" *ngIf="result.length == 0">
+        <span>Nothing to see here.</span>
+    </div>
+
+    <div class="card-container" *ngFor="let item of result">
+        <mat-card>
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{ item.name }}</mat-card-title>
+                <mat-card-subtitle>Posted by: {{item.postedBy}} | Posted On: {{item.date | date:'medium' }}</mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-grid-list cols="4" rowHeight="100px">
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <img mat-card-image [src]="item.img" class="post-img" alt="Card Image" />
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="3" [rowspan]="1">
+                    <mat-card-content>
+                        {{ item.content.length > 600 ? item.content.substr(0, 600) + '...' : item.content }}
+                    </mat-card-content>
+                </mat-grid-tile>
+            </mat-grid-list>
+            <hr>
+            <mat-card-actions>
+                <button mat-raised-button color="primary">{{item.likeCount}}</button>
+                <button mat-raised-button color="primary" style="margin-left: 5px;">{{item.viewCount}}</button>
+                <button mat-raised-button color="primary" style="margin-left: 5px;" routerLink="/view-post/{{item.id}}">View Post</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

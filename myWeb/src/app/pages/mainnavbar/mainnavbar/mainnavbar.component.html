@@ -1,0 +1,28 @@
+<nav class="navbar">
+  <div class="navbar-logo">
+    <span>My App</span>  
+  </div>
+  <span class="example-spacer"></span>
+  <div class="button">
+    <nav>
+      <a routerLink="/">
+        <button class="home" mat-raised-button color="primary">Home</button>
+      </a>
+      <a routerLink="/login-page" *ngIf="!isLoggedIn">
+        <button class="lin" mat-raised-button color="primary">Login</button>
+      </a>
+      <a routerLink="/search-by-name">
+        <button class="search" mat-raised-button color="primary">Search</button>
+      </a>
+      <a routerLink="/create-post" *ngIf="isLoggedIn">
+        <button class="create" mat-raised-button color="primary">Create Blog</button>
+      </a>
+      <a routerLink="/" *ngIf="isLoggedIn" (click)="logout()">
+        <button class="lout" mat-raised-button color="primary">Logout</button>
+      </a>
+      <a routerLink="/view-my-post" *ngIf="isLoggedIn">
+        <button class="viewmy" mat-raised-button color="primary">My Posts</button>
+      </a>
+    </nav>
+  </div>
+</nav>
